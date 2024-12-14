@@ -1,0 +1,69 @@
+""" Python EDA Reading book habits"""
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#load csv dataset into py
+df = pd.read_csv("C:\projects_python\codetechit-task-1\sleep and psychological effects.csv")
+print(df.head())
+
+#check the dataset information
+print(df.info())
+print(df.dtypes)
+
+# descriptive statistics
+print(df.describe())
+
+# check the missing values
+print(df.isnull().sum())
+
+#find unique values in particular column
+print(df['User_ID'].unique())
+
+
+#Visualization
+
+# Age distribution
+plt.figure(figure=(10,5))
+sns.histplot(df['Age'],kde=True,color='skyblue')
+plt.title('Age Distribution')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.show()
+
+
+#Weekly Book Reading Time distribution
+plt.figure(figsize=(10,5))
+sns.histplot(df['Weekly_Reading_Time(hours)'], kde=True, color='orange')
+plt.title('Weekly Reading Time distribution')
+plt.xlabel('Weekly Reading Time(hours)')
+plt.ylabel('Frequency')
+plt.show()
+
+#Visualizing Categorical Data Distributions
+plt.figure(figsize=(8,5))
+sns.countplot(data=df, x='Gender',hue='Gender',palette='viridis',legend=False)
+plt.title('Gender Distribution')
+plt.xlabel('Gender')
+plt.ylabel('count')
+plt.show()
+
+
+numeric_cols = ['Age','Weekly_Reading_Time(hours)']
+corr_matrix = df[numeric_cols].corr()
+
+plt.figure(figsize=(8,6))
+sns.heatmap(corr_matrix,annot=True,cmap='coolwarm',fmt='.2f',square=True)
+plt.title('correlation matrix')
+plt.show()
+
+# Mood Impact Distribution (Pie Chart)
+mood_counts = df['Mood_Impact'].value_counts()
+
+plt.figure(figsize=(8, 6))
+plt.pie(mood_counts, labels=mood_counts.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
+plt.title('Mood Impact Distribution')
+plt.show()

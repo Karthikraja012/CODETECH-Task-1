@@ -2,7 +2,7 @@
 ### **Project Overview**  
 
 **Name**: Karthik Raja N  
-**Company**: Codetech IT Solutions  
+**Company**: Codtech IT Solutions  
 **ID**: CT0806AQ  
 **Domain**: Data Analytics  
 **Duration**: Dec 2024 to Jan 2025  
